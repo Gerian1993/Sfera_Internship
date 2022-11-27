@@ -1,47 +1,51 @@
-import { useState } from "react";
+
 
 import styles from "../styles/Special_menu.module.css";
 
 const Special_menu = (props) => {
-  const [theme, setTheme] = useState("light");
 
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
+
+  const langs = props.langs;
+  const lang = props.lang;
+  const theme = props.theme;
+  const themeImg = props.themeImg;
+
+
+  console.log(theme);
+  console.log(themeImg);
+
+
+  const toggleTheme = (theme,themeImg) => {
+    if (theme === "light" && themeImg === 'free-icon-brightness-2280442.png') {
+      props.setTheme("dark");
+      props.setThemeImg('free-icon-moon-6695676.png')
       console.log(theme);
     } else {
-      setTheme("light");
+      props.setTheme("light");
+      props.setThemeImg('free-icon-brightness-2280442.png')
       console.log(theme);
     }
   };
 
-  const langs = props.langs;
-  const lang = props.lang;
 
   const toggleLang = (key) => {
     props.setLang(key);
     console.log(key);
   };
 
-  console.log(Object.keys(langs).length);
 
-
-/*   const makeLang = () => {
-    for (let i = 0; i < Object.keys(langs).length; i++) {}
-  };
-
-  makeLang(); */
 
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.h1}>{langs[lang].h1}</h1>
       <div className={theme === "light" ? styles.divlight : styles.divdark}>
         <ul className={styles.ul}>
-          {langs[lang].li.map((item) => {
+          {langs[lang].li.map((item, id) => {
             return (
               <li
               onClick={() => toggleLang(item.key)}
               className={styles.li}
+              key={id}
             >
               {item.label}
             </li>
@@ -49,17 +53,9 @@ const Special_menu = (props) => {
           })}
         </ul>
         <img
-          src="free-icon-brightness-2280442.png"
-          alt="light"
+          src={themeImg}
           className={styles.img}
-          onClick={toggleTheme}
-          style={{ cursor: "pointer" }}
-        />
-        <img
-          src="free-icon-moon-6695676.png"
-          alt="dark"
-          className={styles.img}
-          onClick={toggleTheme}
+          onClick={()=>{toggleTheme(theme, themeImg)}}
           style={{ cursor: "pointer" }}
         />
       </div>

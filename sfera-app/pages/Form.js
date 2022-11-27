@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
+import jwt_decode from 'jwt-decode';
+
 
 const Form = (props) => {
   const langs = props;
+  const theme = props.theme;
+
+  console.log(props)
 
   const [user, setUser] = useState({});
 
@@ -15,10 +20,12 @@ const Form = (props) => {
     // скрытие форм
     document.getElementById("signInDiv").hidden = true;
     document.getElementById("login_form").hidden = true;
+
+    localStorage.setItem('token', response.credential)
   }
 
   // выход из аккаунта
-  function handleSignOut(event) {
+  function handleSignOut() {
     setUser({});
     document.getElementById("signInDiv").hidden = false;
     document.getElementById("login_form").hidden = false;
@@ -35,11 +42,13 @@ const Form = (props) => {
     // кнопка логина из апишки гугла
     google.accounts.id.renderButton(document.getElementById("signInDiv"), {
       theme: "outline",
-      size: "large",
+      size: "medium",
     });
   }, []);
+
+
   return (
-    <div className="wrapperlight">
+    <div className={`wrapper`+theme}>
       <form action="/send-data-here" method="post" className="form">
         <label htmlFor="email">{langs.email}</label>
         <input
@@ -62,6 +71,7 @@ const Form = (props) => {
         />
         <button type="submit">{langs.button}</button>
       </form>
+      <br></br>
       {/* залогиненый юзер */}
       <div id="signInDiv"></div>
       {user && (
@@ -73,7 +83,7 @@ const Form = (props) => {
 
       {/* скрытие кнопки, когда пользователь залогинен */}
       {Object.keys(user).length != 0 && (
-        <button onClick={(e) => handleSignOut(e)}>Sign Out</button>
+        <button onClick={(e) => handleSignOut(e)}>{langs.signOut}</button>
       )}
 
       {/* поключение апишки */}

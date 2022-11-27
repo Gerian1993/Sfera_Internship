@@ -19,11 +19,13 @@ a {
   background-color:aqua; 
   width: 500px;
   margin: 0 auto; 
+  color:black;
 } 
 .wrapperdark {
   background-color:black;
   width: 500px; 
   margin: 0 auto;
+  color:white;
 }
 .form {
   display: flex;
