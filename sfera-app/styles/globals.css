@@ -15,24 +15,110 @@ a {
   box-sizing: border-box;
 }
 
-.wrapperlight {
-  background-color:aqua; 
-  width: 500px;
-  margin: 0 auto; 
-  color:black;
-} 
-.wrapperdark {
-  background-color:black;
-  width: 500px; 
-  margin: 0 auto;
-  color:white;
-}
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+
+  .h1 {
+    color: red;
+  }
+
+  .wrapper {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 550px;
+  }
+
+  .wrapperSubMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .divlight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    gap: 10px;
+    background-color: aqua;
+    color: black;
+  }
+
+  .divdark {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    gap: 10px;
+    background-color: black;
+    color: white;
+  }
+
+  .ul {
+    margin: 0 20px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    list-style-type: none;
+  }
+
+  .li {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .subMenuImg {
+    height: 30px;
+    width: 30px;
+    cursor: "pointer";
+  }
+
+  .wrapperlight {
+    background-color: aqua;
+    width: 100%;
+    margin: 0 auto;
+    color: black;
+  }
+  .wrapperdark {
+    background-color: black;
+    width: 100%;
+    margin: 0 auto;
+    color: white;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+
+@media all and (max-width: 320px) {
+
+  .divlight {
+    height: 30%;
+    justify-content: space-around;
+  }
+  .divdark {
+    height: 30%;
+    justify-content: space-around;
+  }
+
+  .ul {
+    flex-direction: column;
+    margin: 20px 0;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
